@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  db:
+    platform: linux/x86_64
+    stdin_open: true # docker run -i
+    tty: true # docker run -t
+    image: mysql
+    restart: always
+    ports:
+      - "10200:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: YOUSERPASSWORD
+    volumes:
+      - "/Users/Shared/local-docker/real-mysql8.0:/var/lib/mysql"
+      - "./예제:/예제:ro"
+      - "./employees.sql:/employees.sql:ro"
